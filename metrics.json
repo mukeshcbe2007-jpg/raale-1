@@ -1,0 +1,48 @@
+{
+  "model": {
+    "selected_k": 5,
+    "silhouette_score": 0.3523,
+    "inertia": 3861.8
+  },
+  "cluster_sizes": {
+    "0": 166,
+    "1": 191,
+    "2": 238,
+    "3": 217,
+    "4": 188
+  },
+  "cluster_balance": {
+    "smallest_cluster_id": 0,
+    "smallest_cluster_size": 166,
+    "smallest_cluster_pct": 16.6,
+    "largest_cluster_id": 2,
+    "largest_cluster_size": 238,
+    "largest_cluster_pct": 23.8,
+    "ratio_largest_to_smallest": 1.43,
+    "observation": "Balanced distribution across all 5 segments with no degenerate clusters. Smallest cluster has 166 users (16.6%), largest has 238 users (23.8%)."
+  },
+  "api": {
+    "api_url": "http://localhost:8000",
+    "health": true,
+    "total_requests": 18,
+    "successful_requests": 18,
+    "failed_requests": 0,
+    "success_rate": 1.0
+  },
+  "validation": {
+    "valid_profiles_passed": 5,
+    "valid_profiles_total": 5,
+    "invalid_input_handled": true,
+    "invalid_tests_passed": 6,
+    "invalid_tests_total": 6,
+    "edge_cases_handled": true,
+    "edge_cases_passed": 4,
+    "edge_cases_total": 4,
+    "prediction_consistent": true
+  },
+  "reproducibility": {
+    "deterministic_prediction": true,
+    "repeat_iterations_tested": 3,
+    "no_retraining_verified": true
+  }
+}

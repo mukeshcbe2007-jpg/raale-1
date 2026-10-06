@@ -1,0 +1,212 @@
+{
+  "project": "OTT Audience Segmentation & Personalization Service",
+  "phase": 1,
+  "status": "trained",
+  "created_at": "2026-10-06T03:51:11.821249+00:00",
+  "training_configuration": {
+    "random_state": 42,
+    "n_init": 20,
+    "scaler": "StandardScaler",
+    "algorithm": "KMeans"
+  },
+  "evaluation_summary": [
+    {
+      "k": 2,
+      "inertia": 7464.22,
+      "silhouette": 0.3016,
+      "cluster_sizes": [
+        591,
+        409
+      ],
+      "min_cluster_size": 409,
+      "max_cluster_size": 591,
+      "min_cluster_pct": 40.9
+    },
+    {
+      "k": 3,
+      "inertia": 5969.5,
+      "silhouette": 0.2896,
+      "cluster_sizes": [
+        206,
+        393,
+        401
+      ],
+      "min_cluster_size": 206,
+      "max_cluster_size": 401,
+      "min_cluster_pct": 20.6
+    },
+    {
+      "k": 4,
+      "inertia": 4798.36,
+      "silhouette": 0.3348,
+      "cluster_sizes": [
+        217,
+        192,
+        399,
+        192
+      ],
+      "min_cluster_size": 192,
+      "max_cluster_size": 399,
+      "min_cluster_pct": 19.2
+    },
+    {
+      "k": 5,
+      "inertia": 3861.8,
+      "silhouette": 0.3523,
+      "cluster_sizes": [
+        166,
+        191,
+        238,
+        217,
+        188
+      ],
+      "min_cluster_size": 166,
+      "max_cluster_size": 238,
+      "min_cluster_pct": 16.6
+    },
+    {
+      "k": 6,
+      "inertia": 3628.36,
+      "silhouette": 0.3091,
+      "cluster_sizes": [
+        183,
+        191,
+        96,
+        163,
+        216,
+        151
+      ],
+      "min_cluster_size": 96,
+      "max_cluster_size": 216,
+      "min_cluster_pct": 9.6
+    }
+  ],
+  "selected_k": 5,
+  "silhouette_score": 0.3523,
+  "inertia": 3861.8,
+  "feature_names": [
+    "watch_time_hours",
+    "sessions_per_week",
+    "avg_session_mins",
+    "completion_rate",
+    "action_pct",
+    "comedy_pct",
+    "drama_pct",
+    "thriller_pct",
+    "sci_fi_pct",
+    "weekend_viewing_pct",
+    "days_since_last_watch"
+  ],
+  "clusters": [
+    {
+      "cluster_id": 0,
+      "segment_name": "Low-Activity / Churn-Risk Viewers",
+      "user_count": 166,
+      "percentage": 16.6,
+      "dominant_behavior": "Infrequent visits, short sessions, high inactivity (>20 days)",
+      "dominant_genre": "Thriller",
+      "description": "Dormant viewers with minimal engagement and elevated churn risk. Require re-engagement campaigns.",
+      "feature_means": {
+        "watch_time_hours": 1.8387,
+        "sessions_per_week": 1.2072,
+        "avg_session_mins": 23.8313,
+        "completion_rate": 0.3149,
+        "action_pct": 0.186,
+        "comedy_pct": 0.1995,
+        "drama_pct": 0.1887,
+        "thriller_pct": 0.2271,
+        "sci_fi_pct": 0.1987,
+        "weekend_viewing_pct": 0.326,
+        "days_since_last_watch": 25.4717
+      }
+    },
+    {
+      "cluster_id": 1,
+      "segment_name": "Weekend Binge Viewers",
+      "user_count": 191,
+      "percentage": 19.1,
+      "dominant_behavior": "Concentrated weekend viewing (82.2%), long session duration, high completion",
+      "dominant_genre": "Drama",
+      "description": "Viewers who consume content primarily during weekends in extended, focused viewing blocks.",
+      "feature_means": {
+        "watch_time_hours": 18.7365,
+        "sessions_per_week": 4.4832,
+        "avg_session_mins": 82.399,
+        "completion_rate": 0.816,
+        "action_pct": 0.1596,
+        "comedy_pct": 0.1487,
+        "drama_pct": 0.2729,
+        "thriller_pct": 0.2671,
+        "sci_fi_pct": 0.1517,
+        "weekend_viewing_pct": 0.8218,
+        "days_since_last_watch": 2.6958
+      }
+    },
+    {
+      "cluster_id": 2,
+      "segment_name": "Casual Viewers",
+      "user_count": 238,
+      "percentage": 23.8,
+      "dominant_behavior": "Moderate watch time (8.4 hrs), short bite-sized sessions (36.3 mins), comedy/variety affinity",
+      "dominant_genre": "Comedy",
+      "description": "Casual viewers consuming bite-sized content on flexible schedules with moderate commitment.",
+      "feature_means": {
+        "watch_time_hours": 8.3633,
+        "sessions_per_week": 3.7168,
+        "avg_session_mins": 36.2756,
+        "completion_rate": 0.5708,
+        "action_pct": 0.2421,
+        "comedy_pct": 0.3339,
+        "drama_pct": 0.1667,
+        "thriller_pct": 0.1215,
+        "sci_fi_pct": 0.1358,
+        "weekend_viewing_pct": 0.3821,
+        "days_since_last_watch": 4.7853
+      }
+    },
+    {
+      "cluster_id": 3,
+      "segment_name": "High-Engagement Power Viewers",
+      "user_count": 217,
+      "percentage": 21.7,
+      "dominant_behavior": "Daily high-volume viewing (36.0 hrs/wk, 14.2 sessions/wk), high completion (88.1%)",
+      "dominant_genre": "Action",
+      "description": "Platform power users with top watch times, frequent weekly visits, and diverse content consumption.",
+      "feature_means": {
+        "watch_time_hours": 36.0095,
+        "sessions_per_week": 14.1507,
+        "avg_session_mins": 94.2558,
+        "completion_rate": 0.8813,
+        "action_pct": 0.2069,
+        "comedy_pct": 0.1993,
+        "drama_pct": 0.1978,
+        "thriller_pct": 0.2036,
+        "sci_fi_pct": 0.1924,
+        "weekend_viewing_pct": 0.4239,
+        "days_since_last_watch": 1.3129
+      }
+    },
+    {
+      "cluster_id": 4,
+      "segment_name": "Genre-Focused Viewers (Action & Sci-Fi)",
+      "user_count": 188,
+      "percentage": 18.8,
+      "dominant_behavior": "High affinity for Action & Sci-Fi (41.0% / 40.6%)",
+      "dominant_genre": "Action",
+      "description": "Enthusiasts with strong, concentrated affinity for specific genres (Action & Sci-Fi).",
+      "feature_means": {
+        "watch_time_hours": 21.6751,
+        "sessions_per_week": 7.3479,
+        "avg_session_mins": 68.2356,
+        "completion_rate": 0.7556,
+        "action_pct": 0.4096,
+        "comedy_pct": 0.0657,
+        "drama_pct": 0.0652,
+        "thriller_pct": 0.0534,
+        "sci_fi_pct": 0.4061,
+        "weekend_viewing_pct": 0.434,
+        "days_since_last_watch": 2.2191
+      }
+    }
+  ]
+}
