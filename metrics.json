@@ -22,7 +22,7 @@
     "observation": "Balanced distribution across all 5 segments with no degenerate clusters. Smallest cluster has 166 users (16.6%), largest has 238 users (23.8%)."
   },
   "api": {
-    "api_url": "http://localhost:8000",
+    "api_url": "http://api:8000",
     "health": true,
     "total_requests": 18,
     "successful_requests": 18,

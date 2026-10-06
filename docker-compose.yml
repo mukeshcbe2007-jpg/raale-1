@@ -1,0 +1,58 @@
+services:
+  trainer:
+    build:
+      context: .
+      dockerfile: trainer/Dockerfile
+    container_name: brahmastra-trainer
+    environment:
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - models_volume:/app/models
+    restart: "no"
+
+  api:
+    build:
+      context: .
+      dockerfile: api/Dockerfile
+    container_name: brahmastra-api
+    depends_on:
+      trainer:
+        condition: service_completed_successfully
+    environment:
+      - PYTHONUNBUFFERED=1
+      - MODEL_PATH=/models/pipeline.pkl
+      - METADATA_PATH=/models/metadata.json
+      - PORT=8000
+    ports:
+      - "8000:8000"
+    volumes:
+      - models_volume:/models
+      - models_volume:/app/models
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+      start_period: 5s
+    restart: unless-stopped
+
+  evaluator:
+    build:
+      context: .
+      dockerfile: evaluator/Dockerfile
+    container_name: brahmastra-evaluator
+    depends_on:
+      api:
+        condition: service_healthy
+    environment:
+      - PYTHONUNBUFFERED=1
+      - API_URL=http://api:8000
+    volumes:
+      - models_volume:/app/models
+      - models_volume:/models
+      - ./metrics.json:/app/metrics.json
+    restart: "no"
+
+volumes:
+  models_volume:
+    name: brahmastra_models_volume
